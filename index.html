@@ -5,20 +5,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trivia!</title>
+    <title>Golf-Trivia!</title>
+    <!-- linking favicon -->
+    <link rel="icon" type="image/jpg" href="assets/images/favicon.jpg">
     <!-- linking reset.css -->
-    <link rel="sylesheet" src="assets/css/reset.css">
+    <link rel="sylesheet" href="assets/css/reset.css">
     <!-- linking bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
     <!-- linking style.css -->
-    <link rel="stylesheet" src="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
+    <div class="card card-start" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Welcome to Golf Trivia!</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Instructions:</h6>
+            <p class="card-text">You will be asked 10 questions. Each question has a time limit, if you don't answer the question in time you
+                will lose! All right and wrong answers will be talied and displayed after the last question is asked! Good
+                luck!
+                <br> Press any key to start!
+            </p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Question 1</h5>
+            <h6 class="card-subtitle mb-2 text-muted">What does it mean when a player scores a par on hole?</h6>
+            <button type="button" class="btn btn-primary" id="a-button1">A</button>
+            <p class="answers">The number of golf shots to get your ball in the hole.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="b-button1">B</button>
+            <p class="answers">The number of putts allowed on the green.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="c-button1">C</button>
+            <p class="answers">The number of practice swings allowed.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="d-button1">D</button>
+            <p class="answers">The number of golf shots per hole minus do overs</p>
+            <br>
+        </div>
+    </div>
+    <div class="card question2" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Question 2</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Who is the best golfer in the world?</h6>
+            <button type="button" class="btn btn-primary" id="">A</button>
+            <p class="answers">Tiger Woods.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">B</button>
+            <p class="answers">Dustin Johnson.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">C</button>
+            <p class="answers">Ricky Fowler.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">D</button>
+            <p class="answers">Phil Mickelson.</p>
+            <br>
+        </div>
+    </div>
+    <div class="card question3" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Question 3</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Which golfer has won the most majors?</h6>
+            <button type="button" class="btn btn-primary" id="">A</button>
+            <p class="answers">Dustin Johnson.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">B</button>
+            <p class="answers">Tiger Woods.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">C</button>
+            <p class="answers">Ben Hogan.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">D</button>
+            <p class="answers">Jack Nickelaus.</p>
+            <br>
+        </div>
+    </div>
+    <div class="card question4" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Question 4</h5>
+            <h6 class="card-subtitle mb-2 text-muted">What happens if a player hits a ball out of bounds?</h6>
+            <button type="button" class="btn btn-primary" id="">A</button>
+            <p class="answers">Player hits a muligan.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">B</button>
+            <p class="answers">4 stroke penalty and ball drop.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">C</button>
+            <p class="answers">2 stroke penalty and ball drop.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">D</button>
+            <p class="answers">Player is ejected from the game.</p>
+            <br>
+        </div>
+    </div>
+    <div class="card question5" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Question 5</h5>
+            <h6 class="card-subtitle mb-2 text-muted">What is the standard par on a golf course?</h6>
+            <button type="button" class="btn btn-primary" id="">A</button>
+            <p class="answers">75.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">B</button>
+            <p class="answers">72.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">C</button>
+            <p class="answers">68.</p>
+            <br>
+            <button type="button" class="btn btn-primary" id="">D</button>
+            <p class="answers">It does not exist.</p>
+            <br>
+        </div>
+    </div>
+    <div class="card-lose">
+        <h3 class="losetext">Times up!</h3>
+        <img src="assets/images/lose.jpg">
+    </div>
+    <div class="card-win">
+        <h3 class="losetext">Correct!</h3>
+        <img src="assets/images/win.jpg">
+    </div>>
+    <div class="card-wrong">
+        <h3 class="losetext">Wrong!</h3>
+        <img src="assets/images/wrong.jpg">
+    </div>>
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='assets/javascript/app.js'></script>
 </body>
 
 </html>

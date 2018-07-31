@@ -1,0 +1,51 @@
+*build html and css
+	-PGA theme?
+
+*maybe animations? or an animation function w/ resets
+	-don't forget to record starting position for any element that is 		animated and to create a function to reset after animation.  Create 		an object containing all the elements to animate (maybe with their 		animation functions as well). 
+	Perphaps funciton reset() { (for loop targeting the array) 
+	-if statement targeting animationArray[i] = hidden.animate(target 		property: value)
+	-that should work
+	-build an animation function and attach to the begining click, make 	
+	sure it pulls from the question and answer array.  Include a for loop 
+	to animate it
+
+*show a question
+	-this should be included in the question/answer object
+	-could also build a show question function and include it in the 
+	document.ready
+
+*attach a set time out to it
+	-this can be done with a set interval
+
+*create a guessRemaining variable, set it to twenty
+	-attach to start function
+
+*build a function to show the timer
+	-this should reset every time a question is answered and a new 	
+	question appears
+	-also should show lose screen when timer hits 0
+
+*create an if statement for when the time runs out
+	-run lose screen function();
+
+*build a win screen function
+	-should show winner and maybe a questions anwered right/wrong 		  counter
+	-should hide the question, and answers
+	-should pause timer
+	-should show questions remaining
+*build a lose screen function
+	-should show you lose  and maybe a questions anwered 	  	  right/wrong counter
+	-should hide question and answers
+	-should pause timer 
+	-should show guess remaining ( guessingRemaining = [20])
+	  lose function(guessRemaining -= 1;)
+
+*create an object containing answers and questions
+
+*create a funciton for right/wrong answer selection
+	-maybe create a sepereate object for the right answer and 
+	  compare it the question object
+	-include an if statement for wrong selection, lose screen function	  ();/winscreenfunction();
+
+
