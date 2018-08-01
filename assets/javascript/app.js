@@ -31,7 +31,8 @@ function questions() {
     $(".card-start").hide();
 
     intervalId = setInterval(decrement, 1000);
-    var timer = [10];
+    var timer = [];
+    timer = 15;
     function decrement() {
         timer -= 1;
         var timerDiv = $(".card-title").append("<div id=timerDiv" + "</div>")
@@ -60,26 +61,26 @@ function questions() {
         });
         // ------------------------------------------------
         // question3--------------------------------------
-        $("#a-button1").click(function () {
+        $("#d-button3").click(function () {
             correctAnswer();
         });
-        $("#b-button1, #c-button1, #d-button1").click(function () {
+        $("#b-button3, #c-button3, #a-button3").click(function () {
             wrongAnswer();
         });
         // ---------------------------------------------------
         // question4-----------------------------------------
-        $("#a-button1").click(function () {
+        $("#c-button4").click(function () {
             correctAnswer();
         });
-        $("#b-button1, #c-button1, #d-button1").click(function () {
+        $("#b-button4, #a-button4, #d-button4").click(function () {
             wrongAnswer();
         });
         // -------------------------------------------------------
         // question5-----------------------------------------------
-        $("#a-button1").click(function () {
+        $("#b-button5").click(function () {
             correctAnswer();
         });
-        $("#b-button1, #c-button1, #d-button1").click(function () {
+        $("#a-button5, #c-button5, #d-button5").click(function () {
             wrongAnswer();
         });
         // --------------------------------------------------------
@@ -98,7 +99,7 @@ function correctAnswer() {
             $(".card-win").hide();
             index += 1;
             $(questionArray[index]).show();
-            questions();
+            
         };
     };
     
