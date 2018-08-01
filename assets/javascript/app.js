@@ -1,5 +1,12 @@
 
 // ------------------user pushes key to start game----------------------------
+var question1 = $(".card");
+var question2 = $(".question2");
+var question3 = $(".question3");
+var question4 = $(".question4");
+var question5 = $(".question5");
+var questionArray = [question1, question2, question3, question4, question5];
+var index = 0;
 function start() {
     $(".card-start").show();
     $(document).keyup(function () {
@@ -16,9 +23,13 @@ function questions() {
     if (keyArray.length > 0) {
         $(document).unbind("keyup");
     }
+
+
+
     // ------------shows question and begins timer-------------------------
-    $(".card").show();
+    $(questionArray[index]).show();
     $(".card-start").hide();
+
     intervalId = setInterval(decrement, 1000);
     var timer = [10];
     function decrement() {
@@ -27,23 +38,57 @@ function questions() {
         $(timerDiv).html("<h2>" + timer + "</h2>");
         // ------------------------time out conditional-----------------------------------
         if (timer === 0) {
-            $(".card").hide();
+            $(questionArray[index]).hide();
             $(timerDiv).hide();
             $(".card-lose").show();
         };
         // ----------------------click functions----------------------------------
+        // question1----------------------------
         $("#a-button1").click(function () {
             correctAnswer();
         });
         $("#b-button1, #c-button1, #d-button1").click(function () {
             wrongAnswer();
         });
+        // --------------------------------------------------
+        // question2-----------------------------------------
+        $("#b-button2").click(function () {
+            correctAnswer();
+        });
+        $("#a-button2, #c-button2, #d-button2").click(function () {
+            wrongAnswer();
+        });
+        // ------------------------------------------------
+        // question3--------------------------------------
+        $("#a-button1").click(function () {
+            correctAnswer();
+        });
+        $("#b-button1, #c-button1, #d-button1").click(function () {
+            wrongAnswer();
+        });
+        // ---------------------------------------------------
+        // question4-----------------------------------------
+        $("#a-button1").click(function () {
+            correctAnswer();
+        });
+        $("#b-button1, #c-button1, #d-button1").click(function () {
+            wrongAnswer();
+        });
+        // -------------------------------------------------------
+        // question5-----------------------------------------------
+        $("#a-button1").click(function () {
+            correctAnswer();
+        });
+        $("#b-button1, #c-button1, #d-button1").click(function () {
+            wrongAnswer();
+        });
+        // --------------------------------------------------------
     };
 
 };
 
 function correctAnswer() {
-    $(".card").hide();
+    $(questionArray[index]).hide();
     $(".card-win").show();
     intervalId = setInterval(decrement, 1000);
     var timer = [3];
@@ -51,12 +96,15 @@ function correctAnswer() {
         timer -= 1;
         if (timer === 0) {
             $(".card-win").hide();
-            $(".question2").show();
+            index += 1;
+            $(questionArray[index]).show();
+            questions();
         };
     };
+    
 };
 function wrongAnswer() {
-    $(".card").hide();
+    $(questionArray[index]).hide();
     $(".card-wrong").show();
     intervalId = setInterval(decrement, 1000);
     var timer = [3];
@@ -64,9 +112,21 @@ function wrongAnswer() {
         timer -= 1;
         if (timer === 0) {
             $(".card-wrong").hide();
-            $(".question2").show();
+            index += 1;
+            $(questionArray[index]).show();
         };
     };
+    index += 1;
+};
+
+function nextQuestion() {
+    // need to create a function that will recongize the current question and be able to move to the next question after the timeout/wrong/win screen
+
+    // need a variable to reconize current question
+    var currentQuestion = [];
+    var nextQuestion = [];
+
+
 };
 
 start();
