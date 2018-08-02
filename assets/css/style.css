@@ -98,3 +98,11 @@ body {
     width: 100%;
     display: none;
 }
+.card-final {
+    color: blue;
+    text-align: center;
+    margin: auto;
+    margin-top: 10%;
+    width: 100%;
+    display: none;
+};
