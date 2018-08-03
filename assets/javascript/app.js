@@ -9,29 +9,29 @@ var questionArray = [question1, question2, question3, question4, question5];
 var index = 0;
 var wrongArray = [0];
 var correctArray = [0];
+var keyArray = [];
 function start() {
+    index = 0;
+    wrongArray = [0];
+    correctArray = [0];
     $(".card-start").show();
     $(document).keyup(function () {
+        keyArray.push(event.key);
+        console.log(keyArray);
+        if (keyArray.length > 0) {
+            $(document).unbind("keyup");
+            questions();
 
-
-        questions();
-    });
+        };
+    });    
 };
 // ----------------prevents game from breaking if multiple keys are pressed--------------------------------
 function questions() {
-    var keyArray = [];
-    keyArray.push(event.key);
-    console.log(keyArray);
-    if (keyArray.length > 0) {
-        $(document).unbind("keyup");
-    }
-    // ------------shows question and begins timer-------------------------
     $(questionArray[index]).show();
     $(".card-start").hide();
     intervalId = setInterval(decrement, 1000);
     var timer = [];
     timer = 15;
-
     function decrement() {
         timer -= 1;
         var timerDiv = $(".card-title").append("<div id=timerDiv" + "</div>")
@@ -41,95 +41,136 @@ function questions() {
             timeout();
             $(timerDiv).hide();
         };
-        $(".btn").click(function() {
+        $(".btn").click(function () {
+            if (index === 0) {
+
+            };
             timer = 18;
         });
     };
-    function timeout() {
-        $(questionArray[index]).hide();
-        
-        $(".card-lose").show();
-    };
-    // ----------------------click functions----------------------------------
-    // question1----------------------------
-    $("#a-button1").click(function () {
-        correctAnswer();
-        correctArray++;
-    });
-    $("#b-button1, #c-button1, #d-button1").click(function () {
-        wrongAnswer();
-        wrongArray++;
-    });
-    // --------------------------------------------------
-    // question2-----------------------------------------
-    $("#b-button2").click(function () {
-        correctAnswer();
-        correctArray++;
-    });
-    $("#a-button2, #c-button2, #d-button2").click(function () {
-        wrongAnswer();
-        wrongArray++;
-    });
-    // ------------------------------------------------
-    // question3--------------------------------------
-    $("#d-button3").click(function () {
-        correctAnswer();
-        correctArray++;
-    });
-    $("#b-button3, #c-button3, #a-button3").click(function () {
-        wrongAnswer();
-        wrongArray++;
-    });
-    // ---------------------------------------------------
-    // question4-----------------------------------------
-    $("#c-button4").click(function () {
-        correctAnswer();
-        correctArray++;
-    });
-    $("#b-button4, #a-button4, #d-button4").click(function () {
-        wrongAnswer();
-        wrongArray++;
-    });
-    // -------------------------------------------------------
-    // question5-----------------------------------------------
-    $("#b-button5").click(function () {
-        correctAnswer();
-        correctArray++;
-        $(".card-final").show();
-    });
-    $("#a-button5, #c-button5, #d-button5").click(function () {
-        wrongAnswer();
-        wrongArray ++;
-        $(".card-final").show();
-    });
-    
-   
-    // --------------------------------------------------------
 };
+// ------------shows question and begins timer-------------------------
+
+function timeout() {
+    if (index === 5) {
+        return;
+    };
+    $(questionArray[index]).hide();
+    $(".card-lose").show();
+};
+// ----------------------click functions----------------------------------
+// question1----------------------------
+$("#a-button1").click(function () {
+    correctAnswer();
+    correctArray++;
+});
+$("#b-button1, #c-button1, #d-button1").click(function () {
+    wrongAnswer();
+    wrongArray++;
+});
+// --------------------------------------------------
+// question2-----------------------------------------
+$("#b-button2").click(function () {
+    correctAnswer();
+    correctArray++;
+});
+$("#a-button2, #c-button2, #d-button2").click(function () {
+    wrongAnswer();
+    wrongArray++;
+});
+// ------------------------------------------------
+// question3--------------------------------------
+$("#d-button3").click(function () {
+    correctAnswer();
+    correctArray++;
+});
+$("#b-button3, #c-button3, #a-button3").click(function () {
+    wrongAnswer();
+    wrongArray++;
+});
+// ---------------------------------------------------
+// question4-----------------------------------------
+$("#c-button4").click(function () {
+    correctAnswer();
+    correctArray++;
+});
+$("#b-button4, #a-button4, #d-button4").click(function () {
+    wrongAnswer();
+    wrongArray++;
+});
+// -------------------------------------------------------
+// question5-----------------------------------------------
+$("#b-button5").click(function () {
+    correctArray++;
+    var calc = wrongArray * 20;
+    var score = 100 - calc;
+    var outcome = score;
+    $(".scoreArea").text(outcome + "%");
+    $(".correctArea").text(correctArray);
+    $(questionArray[index]).hide();
+    index++;
+    $(".card-final").show();
+    $(".loseArea").text(wrongArray);
+    // correctAnswer();
+});
+$("#a-button5, #c-button5, #d-button5").click(function () {
+    wrongArray++;
+    var calc = wrongArray * 20;
+    var score = 100 - calc;
+    var outcome = score;
+    $(".scoreArea").text(outcome + "%");
+    $(".correctArea").text(correctArray);
+    $(".loseArea").text(wrongArray);
+    $(questionArray[index]).hide();
+    index++;
+    $(".card-final").show();
+    // wrongAnswer();
+});
+$(".refresh").click(function () {
+    index = 0;
+    wrongArray = [0];
+    correctArray = [0];
+    $(".card-final").hide();
+    clearInterval(intervalId);
+    start();
+});
+
+
+    // --------------------------------------------------------
+
 console.log("correctArray" + correctArray);
 console.log("wrongArray" + wrongArray);
 function correctAnswer() {
+
     $(questionArray[index]).hide();
     $(".card-win").show();
     $(".card-wrong").hide();
+    index += 1;
     intervalId2 = setInterval(decrement2, 1000);
-    var timer = [3];
+    var timer5 = [3];
     function decrement2() {
-        timer -= 1;
-        if (timer === 0) {
+        timer5 -= 1;
+        if (timer5 === 0) {
             nextQuestion();
+        };
+        if (index === 5) {
+            return;
+        };
+        if (index === 0) {
+            return;
         };
     };
 };
 function nextQuestion() {
     $(".card-win").hide();
-    index += 1;
     $(questionArray[index]).show();
+    questions();
 };
 function wrongAnswer() {
     $(questionArray[index]).hide();
     $(".card-wrong").show();
     $(".card-win").hide();
+    index += 1;
     intervalId3 = setInterval(decrement3, 1000);
     var timer4 = [3];
     function decrement3() {
@@ -137,9 +178,10 @@ function wrongAnswer() {
         if (timer4 === 0) {
             nextQuestion();
         };
+        if (index === 5) {
+            $(".card-wrong").hide();
+        };
     };
 
 };
-
-
 start();
