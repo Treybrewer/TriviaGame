@@ -1,5 +1,5 @@
 
-// ------------------user pushes key to start game----------------------------
+// global variables---------------------------------------------------------
 var question1 = $(".card");
 var question2 = $(".question2");
 var question3 = $(".question3");
@@ -10,51 +10,58 @@ var index = 0;
 var wrongArray = [0];
 var correctArray = [0];
 var keyArray = [];
+// ---------------------------------------------------------------------------------
 function start() {
     index = 0;
     wrongArray = [0];
     correctArray = [0];
     $(".card-start").show();
+    // ------------------user pushes key to start game----------------------------
     $(document).keyup(function () {
+       
         keyArray.push(event.key);
-        console.log(keyArray);
+        // ----------------prevents game from breaking if multiple keys are pressed--------------------------------
         if (keyArray.length > 0) {
             $(document).unbind("keyup");
             questions();
-
         };
     });    
 };
-// ----------------prevents game from breaking if multiple keys are pressed--------------------------------
+
 function questions() {
+    // ------------shows question and begins timer-------------------------
     $(questionArray[index]).show();
     $(".card-start").hide();
+    console.log(keyArray);
+    var intervalId;
     intervalId = setInterval(decrement, 1000);
     var timer = [];
     timer = 15;
     function decrement() {
+        if (timer < 1) {
+            $(timerDiv).hide();
+            timeout();
+        };
         timer -= 1;
         var timerDiv = $(".card-title").append("<div id=timerDiv" + "</div>")
         $(timerDiv).html("<h2>" + timer + "</h2>");
         // ------------------------time out conditional-----------------------------------
-        if (timer === 0) {
-            timeout();
-            $(timerDiv).hide();
-        };
+        
         $(".btn").click(function () {
             if (index === 0) {
-
             };
             timer = 18;
         });
     };
+    
 };
-// ------------shows question and begins timer-------------------------
+
 
 function timeout() {
     if (index === 5) {
         return;
     };
+    
     $(questionArray[index]).hide();
     $(".card-lose").show();
 };
@@ -111,7 +118,7 @@ $("#b-button5").click(function () {
     index++;
     $(".card-final").show();
     $(".loseArea").text(wrongArray);
-    // correctAnswer();
+    
 });
 $("#a-button5, #c-button5, #d-button5").click(function () {
     wrongArray++;
@@ -123,25 +130,24 @@ $("#a-button5, #c-button5, #d-button5").click(function () {
     $(".loseArea").text(wrongArray);
     $(questionArray[index]).hide();
     index++;
+    $(".card-wrong").hide();
     $(".card-final").show();
-    // wrongAnswer();
+   
 });
+// ---------------------------------------------------------------
+// refresh button ------------------------------------------------
 $(".refresh").click(function () {
     index = 0;
     wrongArray = [0];
     correctArray = [0];
     $(".card-final").hide();
-    clearInterval(intervalId);
+    //  
     start();
 });
-
+// ==============================================================
 
     // --------------------------------------------------------
-
-console.log("correctArray" + correctArray);
-console.log("wrongArray" + wrongArray);
 function correctAnswer() {
-
     $(questionArray[index]).hide();
     $(".card-win").show();
     $(".card-wrong").hide();
@@ -151,6 +157,7 @@ function correctAnswer() {
     function decrement2() {
         timer5 -= 1;
         if (timer5 === 0) {
+            clearInterval(intervalId2);
             nextQuestion();
         };
         if (index === 5) {
@@ -163,6 +170,7 @@ function correctAnswer() {
 };
 function nextQuestion() {
     $(".card-win").hide();
+    $(".card-wrong").hide();
     $(questionArray[index]).show();
     questions();
 };
@@ -176,6 +184,7 @@ function wrongAnswer() {
     function decrement3() {
         timer4 -= 1;
         if (timer4 === 0) {
+            clearInterval(intervalId3);
             nextQuestion();
         };
         if (index === 5) {
